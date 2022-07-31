@@ -1,0 +1,89 @@
+ rmi remote method invocation :只针对java
+
+ client： stub
+ server： skeleton
+
+
+ 序列化和反序列化  也叫做 编码与解码
+
+ RPC：Remote Procedure Call,  远程过程调用，很多RPC框架是跨语言的
+ 步骤如下：
+ 1. 定义一个接口说明文件，描述类对象（结构体），对象成员，接口方法等一系列信息
+ 2. 通过RPC框架所提供的编译器，将接口说明文件编译生成具体的语言文件
+ 3. 在客户端与服务器分别引入RPC编译器所生成的文件，即可像调用本地方法一样去调用远程方法
+
+ 官方网站 https://developers.google.cn/protocol-buffers/
+
+https://developers.google.cn/protocol-buffers/   protoc-21.3-osx-x86_64.zip
+
+protoc --java_out=src/main/java src/protobuf/Student.proto
+protoc --java_out=src/main/java/ src/protobuf/People.proto
+
+stackover
+
+protobuf / thrift  和git集成； git submodule git仓库里的一个仓库；
+==》ServerProject  Protobuf-java   data.proto CientProject
+
+branch:
+    develop  开发分支
+    test     测试分支
+    master   生产分支
+
+
+git subtree 推荐使用管理ServerProject  Protobuf-java   data.proto CientProject
+
+安装thrift ： brew install  thrift
+
+thrift
+   struct | service | exception
+     list   set  map
+   xx.thrift  idl
+
+wangsha@wangshadeiMac netty_lecture % thrift --gen java src/thrift/data.thrift
+wangsha@wangshadeiMac netty_lecture % thrift -vesrion
+
+wangsha@wangshadeiMac netty_lecture % thrift --gen py src/thrift/data.thrift
+
+thrift对多语言的支持
+ 进入thrift包目录，执行如下命令生成python第三方依赖；
+ sudo python setup.py install
+ 生成的依赖位于 Installed /Library/Python/2.7/site-packages/thrift-0.16.0-py2.7.egg
+ wangsha@wangshadeiMac lib % pwd
+ /Users/wangsha/Downloads/thrift-0.16.0/lib
+ wangsha@wangshadeiMac lib % cd py
+ wangsha@wangshadeiMac py % ls
+ CMakeLists.txt		README.md		setup.py
+ MANIFEST.in		coding_standards.md	src
+ Makefile.am		compat			test
+ Makefile.in		setup.cfg
+ wangsha@wangshadeiMac py % sudo python setup.py install
+ Password:
+ running install
+ running bdist_egg*********
+
+ wangsha@wangshadeiMac Extras % which python2
+ /Library/Frameworks/Python.framework/Versions/2.7/bin/python2
+ wangsha@wangshadeiMac Extras % ls -l /Library/Frameworks/Python.framework/Versions/2.7/bin/python
+ lrwxr-xr-x  1 root  admin  7  7 30 06:48 /Library/Frameworks/Python.framework/Versions/2.7/bin/python -> python2
+ /Library/Frameworks/Python.framework/Versions/3.10/bin/python3
+
+  sudo  /Library/Frameworks/Python.framework/Versions/2.7/bin/python2 setup.py install
+  sudo   /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 setup.py install
+
+sudo  /Library/Frameworks/Python.framework/Versions/3.10/bin/pip3.10 install six -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+
+/Library/Frameworks/Python.framework/Versions/3.10/bin/python3.10 -m pip install --upgrade pip
+/Library/Frameworks/Python.framework/Versions/2.7/bin/python2 -m pip install --upgrade pip
+
+
+ctrl + c / v / y
+
+-----------
+netty http
+netty rpc
+websocket
+protocolbuf学习
+   https://developers.google.cn/protocol-buffers/
+thrift学习
+Grpc学习
+  https://www.grpc.io/docs/languages/java/quickstart/

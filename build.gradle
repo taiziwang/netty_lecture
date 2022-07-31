@@ -1,0 +1,30 @@
+/*项目运行环境*/
+plugins {
+    id 'java'
+}
+
+group 'org.bigdata'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+/*指定打包成war包*/
+//apply plugin: 'jar'
+
+/*指定仓库的路径指定所使用的仓库，mavenCentral()表示使用中央仓库，此刻项目中所需要的jar包都会默认从中央仓库下载到本地指定目录，gradle默认本地仓库在C盘用户目录的.gradle文件目录下
+*/
+repositories {
+        //阿里云
+//        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+        mavenCentral()
+}
+
+/*gradle_工程所有的，jar包的坐标都在dependencies属性内放置*/
+/*每个jar包都有三个基本元素组成：group，name，version*/
+
+dependencies {
+    implementation 'io.netty:netty-all:4.1.10.Final'
+    implementation 'com.google.protobuf:protobuf-java:3.11.4'
+    implementation 'com.google.protobuf:protobuf-java-util:3.11.4'
+    implementation 'org.apache.thrift:libthrift:0.16.0'
+}
