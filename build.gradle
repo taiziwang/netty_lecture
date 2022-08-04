@@ -1,6 +1,7 @@
 /*项目运行环境*/
 plugins {
     id 'java'
+    id 'com.google.protobuf' version '0.8.18'
 }
 
 group 'org.bigdata'
@@ -27,4 +28,33 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.11.4'
     implementation 'com.google.protobuf:protobuf-java-util:3.11.4'
     implementation 'org.apache.thrift:libthrift:0.16.0'
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.48.0'
+    implementation 'io.grpc:grpc-protobuf:1.48.0'
+    implementation 'io.grpc:grpc-stub:1.48.0'
 }
+
+//plugins {
+//    id 'com.google.protobuf' version '0.8.18'
+//}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.1"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.48.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { option 'lite' }
+            }
+            task.plugins {
+                grpc { option 'lite' }
+            }
+        }
+    }
+}
+

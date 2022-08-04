@@ -87,3 +87,45 @@ protocolbuf学习
 thrift学习
 Grpc学习
   https://www.grpc.io/docs/languages/java/quickstart/
+
+brew install scala@2.11
+If you need to have scala@2.11 first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/scala@2.11/bin:$PATH"' >> ~/.zshrc
+wangsha@wangshadeiMac /Library % source ~/.zshrc
+
+
+https://www.grpc.io/docs/languages/java/quickstart/
+cd ./IdeaProjects/grpc-java/example
+
+gradlew
+24->  https://github.com/grpc/grpc-java
+24-> Grpc通过generateProto插件编译src/main/Student.proto生成客户端服务端代码
+wangsha@wangshadeiMac netty_lecture % ./gradlew clean build
+
+BUILD SUCCESSFUL in 1m 20s
+9 actionable tasks: 9 executed
+
+wangsha@wangshadeiMac netty_lecture % gradle generateProto build
+
+BUILD SUCCESSFUL in 4s
+8 actionable tasks: 8 up-to-date
+wangsha@wangshadeiMac netty_lecture % gradle clean generateProto
+
+BUILD SUCCESSFUL in 6s
+4 actionable tasks: 4 executed
+wangsha@wangshadeiMac netty_lecture % gradle generateProto build
+
+BUILD SUCCESSFUL in 9s
+8 actionable tasks: 5 executed, 3 up-to-date
+wangsha@wangshadeiMac netty_lecture % gradle generateProto
+
+BUILD SUCCESSFUL in 1s
+3 actionable tasks: 3 up-to-date
+wangsha@wangshadeiMac netty_lecture %
+
+#生成路径：
+ /Users/wangsha/IdeaProjects/netty_lecture/build/generated/source/proto/main/grpc
+
+
+
+
